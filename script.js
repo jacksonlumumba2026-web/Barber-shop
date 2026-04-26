@@ -1,1 +1,1 @@
-console.log("Barber site ready");
+console.log("Barber premium ready");
