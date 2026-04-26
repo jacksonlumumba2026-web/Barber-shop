@@ -1,0 +1,73 @@
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+header {
+  background: #111;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+nav a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.hero {
+  background: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1') no-repeat center/cover;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.btn {
+  background: gold;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#services {
+  padding: 40px;
+  text-align: center;
+}
+
+.services {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#gallery {
+  padding: 40px;
+  text-align: center;
+}
+
+.gallery img {
+  width: 30%;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+#contact {
+  padding: 40px;
+  text-align: center;
+}
+
+footer {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  }
