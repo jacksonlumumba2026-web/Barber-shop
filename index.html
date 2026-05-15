@@ -1,31 +1,535 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Fade Kings</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Irene Household Collections | Quality. Comfort. Style.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --green: #1a4731;
+    --green-light: #2d6a4f;
+    --gold: #c9a84c;
+    --gold-light: #e0c068;
+    --cream: #faf7f2;
+    --dark: #0f1e16;
+    --text: #2c2c2c;
+    --gray: #6b7280;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Jost',sans-serif;color:var(--text);background:var(--cream);}
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(15,30,22,0.95);backdrop-filter:blur(12px);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 5%;height:70px;
+    border-bottom:1px solid rgba(201,168,76,0.2);
+  }
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-icon{
+    width:42px;height:42px;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+    color:var(--dark);border-radius:4px;
+  }
+  .logo-text{color:#fff;}
+  .logo-text span{display:block;font-size:14px;font-weight:600;letter-spacing:1px;}
+  .logo-text small{font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{
+    background:var(--gold);color:var(--dark);
+    padding:9px 22px;font-size:12px;font-weight:600;letter-spacing:1px;
+    text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;
+    text-decoration:none;transition:background .3s;
+  }
+  .nav-cta:hover{background:var(--gold-light);}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--dark) 0%,var(--green) 60%,#1f5c38 100%);
+    display:flex;align-items:center;
+    padding:0 5%;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1400&q=80') center/cover no-repeat;
+    opacity:0.15;
+  }
+  .hero-content{position:relative;max-width:600px;animation:fadeUp .9s ease both;}
+  .hero-tag{
+    display:inline-block;
+    background:rgba(201,168,76,0.15);border:1px solid var(--gold);
+    color:var(--gold);padding:6px 18px;font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;margin-bottom:24px;border-radius:2px;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.8rem,5vw,4.5rem);
+    color:#fff;line-height:1.1;margin-bottom:12px;
+  }
+  .hero h1 em{color:var(--gold);font-style:italic;}
+  .hero p{color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.7;margin-bottom:36px;max-width:480px;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold);color:var(--dark);padding:14px 32px;
+    font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+    text-decoration:none;border-radius:2px;transition:all .3s;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+  .btn-outline{
+    border:1px solid rgba(255,255,255,0.5);color:#fff;padding:14px 32px;
+    font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+    text-decoration:none;border-radius:2px;transition:all .3s;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+  .hero-badges{
+    position:absolute;bottom:0;left:0;right:0;
+    background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);
+    display:flex;justify-content:center;gap:0;
+    border-top:1px solid rgba(201,168,76,0.2);
+  }
+  .badge{
+    flex:1;text-align:center;padding:18px 20px;border-right:1px solid rgba(201,168,76,0.15);
+    display:flex;align-items:center;justify-content:center;gap:12px;
+  }
+  .badge:last-child{border-right:none;}
+  .badge-icon{font-size:22px;}
+  .badge-text strong{display:block;color:#fff;font-size:13px;font-weight:600;}
+  .badge-text span{color:rgba(255,255,255,0.5);font-size:11px;}
+
+  /* SECTIONS */
+  section{padding:90px 5%;}
+  .section-label{
+    text-align:center;color:var(--gold);font-size:11px;letter-spacing:4px;
+    text-transform:uppercase;margin-bottom:12px;
+  }
+  .section-title{
+    text-align:center;font-family:'Playfair Display',serif;
+    font-size:clamp(1.8rem,3vw,2.6rem);color:var(--dark);margin-bottom:50px;
+  }
+
+  /* CATEGORIES */
+  .categories{background:#fff;}
+  .cat-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;
+  }
+  .cat-card{
+    border-radius:6px;overflow:hidden;cursor:pointer;
+    position:relative;aspect-ratio:3/4;
+    background:var(--green);
+    transition:transform .3s;
+  }
+  .cat-card:hover{transform:translateY(-6px);}
+  .cat-card img{width:100%;height:100%;object-fit:cover;opacity:0.7;transition:opacity .3s;}
+  .cat-card:hover img{opacity:0.85;}
+  .cat-info{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(to top,rgba(10,26,17,0.95) 0%,transparent 100%);
+    padding:40px 14px 16px;
+  }
+  .cat-info h3{color:#fff;font-size:14px;font-weight:600;margin-bottom:4px;}
+  .cat-info p{color:var(--gold);font-size:11px;}
+
+  /* PRODUCTS */
+  .products{background:var(--cream);}
+  .prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;}
+  .prod-card{
+    background:#fff;border-radius:6px;overflow:hidden;
+    box-shadow:0 2px 12px rgba(0,0,0,0.06);
+    transition:box-shadow .3s,transform .3s;
+  }
+  .prod-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.12);transform:translateY(-4px);}
+  .prod-img{width:100%;aspect-ratio:1;object-fit:cover;background:#eee;display:block;}
+  .prod-img-placeholder{
+    width:100%;aspect-ratio:1;
+    background:linear-gradient(135deg,var(--green) 0%,var(--green-light) 100%);
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.5rem;
+  }
+  .prod-body{padding:16px;}
+  .prod-body h4{font-size:14px;font-weight:600;margin-bottom:6px;color:var(--dark);}
+  .prod-body .price{color:var(--green);font-weight:700;font-size:15px;}
+  .prod-body .old-price{color:var(--gray);text-decoration:line-through;font-size:12px;margin-left:6px;}
+  .prod-buy{
+    display:block;width:100%;margin-top:12px;
+    background:var(--green);color:#fff;border:none;
+    padding:10px;font-size:12px;font-weight:600;letter-spacing:1px;
+    text-transform:uppercase;cursor:pointer;border-radius:3px;
+    transition:background .3s;
+  }
+  .prod-buy:hover{background:var(--green-light);}
+
+  /* ABOUT */
+  .about{
+    background:var(--green);
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  }
+  .about-content{}
+  .about .section-label{text-align:left;color:var(--gold-light);}
+  .about .section-title{text-align:left;color:#fff;margin-bottom:20px;}
+  .about p{color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:20px;}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;}
+  .stat{border-left:3px solid var(--gold);padding-left:16px;}
+  .stat strong{display:block;font-size:2rem;color:var(--gold);font-family:'Playfair Display',serif;}
+  .stat span{color:rgba(255,255,255,0.6);font-size:13px;}
+  .about-img{
+    border-radius:6px;overflow:hidden;
+    background:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80') center/cover;
+    aspect-ratio:4/5;
+    position:relative;
+  }
+  .about-img::after{
+    content:'';position:absolute;inset:0;
+    border:2px solid rgba(201,168,76,0.4);border-radius:6px;
+    transform:translate(12px,12px);
+  }
+
+  /* TESTIMONIALS */
+  .testimonials{background:#fff;}
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+  .testi-card{
+    background:var(--cream);border-radius:6px;padding:28px;
+    border-left:4px solid var(--gold);
+  }
+  .testi-stars{color:var(--gold);font-size:14px;margin-bottom:14px;}
+  .testi-card p{font-size:14px;line-height:1.7;color:var(--gray);margin-bottom:16px;font-style:italic;}
+  .testi-card strong{font-size:13px;color:var(--dark);display:block;}
+  .testi-card small{font-size:11px;color:var(--gold);}
+
+  /* CONTACT */
+  .contact{
+    background:var(--dark);
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
+  }
+  .contact .section-label{text-align:left;color:var(--gold);}
+  .contact .section-title{text-align:left;color:#fff;margin-bottom:24px;}
+  .contact-info p{color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:28px;}
+  .contact-item{display:flex;gap:16px;margin-bottom:20px;align-items:flex-start;}
+  .contact-icon{
+    width:42px;height:42px;min-width:42px;background:rgba(201,168,76,0.1);
+    border:1px solid rgba(201,168,76,0.3);border-radius:4px;
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+  }
+  .contact-text strong{display:block;color:#fff;font-size:13px;font-weight:600;margin-bottom:2px;}
+  .contact-text span{color:rgba(255,255,255,0.55);font-size:13px;}
+  .contact-text a{color:rgba(255,255,255,0.55);font-size:13px;text-decoration:none;}
+  .contact-text a:hover{color:var(--gold);}
+  .contact-form{background:rgba(255,255,255,0.04);border-radius:8px;padding:36px;border:1px solid rgba(201,168,76,0.15);}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+  .form-group input,.form-group textarea,.form-group select{
+    width:100%;background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);color:#fff;
+    padding:12px 16px;font-size:14px;border-radius:3px;outline:none;
+    font-family:'Jost',sans-serif;transition:border-color .3s;
+  }
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--gold);}
+  .form-group textarea{resize:vertical;min-height:100px;}
+  .form-submit{
+    background:var(--gold);color:var(--dark);border:none;
+    width:100%;padding:14px;font-size:13px;font-weight:700;
+    letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:3px;
+    transition:background .3s;
+  }
+  .form-submit:hover{background:var(--gold-light);}
+
+  /* FOOTER */
+  footer{
+    background:#06100b;color:rgba(255,255,255,0.5);
+    padding:30px 5%;display:flex;align-items:center;
+    justify-content:space-between;flex-wrap:wrap;gap:16px;
+    font-size:13px;border-top:1px solid rgba(201,168,76,0.1);
+  }
+  footer a{color:var(--gold);text-decoration:none;}
+  .social-links{display:flex;gap:16px;}
+  .social-links a{
+    width:36px;height:36px;border-radius:50%;
+    background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);font-size:15px;text-decoration:none;transition:background .3s;
+  }
+  .social-links a:hover{background:var(--gold);color:var(--dark);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+  @media(max-width:768px){
+    .nav-links,.nav-cta{display:none;}
+    .hero-badges{flex-wrap:wrap;position:relative;}
+    .badge{min-width:50%;border-right:none;border-bottom:1px solid rgba(201,168,76,0.15);}
+    .about,.contact{grid-template-columns:1fr;}
+    .about-img{aspect-ratio:16/9;}
+  }
+</style>
 </head>
-
 <body>
 
-<header>
-  <h2>Fade Kings</h2>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">IH</div>
+    <div class="logo-text">
+      <span>Irene Household</span>
+      <small>Collections</small>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/254716060029" class="nav-cta">📞 +254 716 060029</a>
+</nav>
 
-<section class="hero">
-  <h1>Sharp Cuts, Clean Style</h1>
-  <a href="https://wa.me/254712345678" class="btn">Book Now</a>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">✦ Quality. Comfort. Style.</div>
+    <h1>Your Home,<br><em>Beautifully</em><br>Furnished.</h1>
+    <p>Discover a wide range of premium household collections — from luxurious beddings and mosquito nets to elegant furniture and kitchen essentials.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">🛒 Shop Now</a>
+      <a href="https://wa.me/254716060029" class="btn-outline">💬 WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="hero-badges">
+    <div class="badge">
+      <span class="badge-icon">🏆</span>
+      <div class="badge-text"><strong>Premium Quality</strong><span>Verified Products</span></div>
+    </div>
+    <div class="badge">
+      <span class="badge-icon">💰</span>
+      <div class="badge-text"><strong>Best Prices</strong><span>Affordable & Fair</span></div>
+    </div>
+    <div class="badge">
+      <span class="badge-icon">🚚</span>
+      <div class="badge-text"><strong>Fast Delivery</strong><span>Nairobi & Beyond</span></div>
+    </div>
+    <div class="badge">
+      <span class="badge-icon">💬</span>
+      <div class="badge-text"><strong>24/7 Support</strong><span>Always Here</span></div>
+    </div>
+  </div>
 </section>
 
-<section class="gallery">
-  <img src="https://images.unsplash.com/photo-1599351431405-9b4b8a7e2b4f">
-  <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70">
-  <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033">
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <p class="section-label">✦ Browse Our Range</p>
+  <h2 class="section-title">Shop By Category</h2>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" alt="Beddings"/>
+      <div class="cat-info"><h3>Beddings & Mosquito Nets</h3><p>Sleep in style & comfort</p></div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Seat Covers"/>
+      <div class="cat-info"><h3>Seat Covers</h3><p>Elegant & durable</p></div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80" alt="Coffee Tables"/>
+      <div class="cat-info"><h3>Coffee Tables</h3><p>Modern & stylish</p></div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80" alt="Home Furniture"/>
+      <div class="cat-info"><h3>Home Furniture</h3><p>Functional & beautiful</p></div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80" alt="Towels"/>
+      <div class="cat-info"><h3>Towels & Linens</h3><p>Soft & absorbent</p></div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Utensils"/>
+      <div class="cat-info"><h3>Kitchen & Utensils</h3><p>Quality you can trust</p></div>
+    </div>
+  </div>
 </section>
 
-<script src="script.js"></script>
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <p class="section-label">✦ Handpicked For You</p>
+  <h2 class="section-title">Featured Products</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" alt="Luxury Mosquito Net"/>
+      <div class="prod-body">
+        <h4>Luxury Mosquito Net (4-Post)</h4>
+        <div><span class="price">KSh 4,500</span><span class="old-price">KSh 6,000</span></div>
+        <button class="prod-buy" onclick="window.open('https://wa.me/254716060029?text=Hi! I\'m interested in the Luxury Mosquito Net','_blank')">Order via WhatsApp</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-placeholder">🛏️</div>
+      <div class="prod-body">
+        <h4>6×6 Mosquito Net</h4>
+        <div><span class="price">KSh 3,800</span></div>
+        <button class="prod-buy" onclick="window.open('https://wa.me/254716060029?text=Hi! I\'m interested in the 6x6 Mosquito Net','_blank')">Order via WhatsApp</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Elastic Sofa Covers"/>
+      <div class="prod-body">
+        <h4>Elastic Sofa Covers</h4>
+        <div><span class="price">KSh 3,500</span></div>
+        <button class="prod-buy" onclick="window.open('https://wa.me/254716060029?text=Hi! I\'m interested in Elastic Sofa Covers','_blank')">Order via WhatsApp</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-placeholder">🪑</div>
+      <div class="prod-body">
+        <h4>Round Coffee Table (Marble)</h4>
+        <div><span class="price">KSh 8,500</span></div>
+        <button class="prod-buy" onclick="window.open('https://wa.me/254716060029?text=Hi! I\'m interested in the Round Coffee Table','_blank')">Order via WhatsApp</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-placeholder">🪞</div>
+      <div class="prod-body">
+        <h4>Console Table (Gold Frame)</h4>
+        <div><span class="price">KSh 6,500</span></div>
+        <button class="prod-buy" onclick="window.open('https://wa.me/254716060029?text=Hi! I\'m interested in the Console Table','_blank')">Order via WhatsApp</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80" alt="Premium Towels"/>
+      <div class="prod-body">
+        <h4>Premium White Towels</h4>
+        <div><span class="price">KSh 1,200</span></div>
+        <button class="prod-buy" onclick="window.open('https://wa.me/254716060029?text=Hi! I\'m interested in Premium Towels','_blank')">Order via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-content">
+    <p class="section-label">✦ Who We Are</p>
+    <h2 class="section-title">Your One-Stop Shop For All Household Needs</h2>
+    <p>Irene Household Collections is a trusted dealer in a wide variety of household items including utensils, beddings, seat covers, coffee tables, carpets, towels, and all-white beddings ideal for hotels and Airbnb's.</p>
+    <p>We pride ourselves in offering premium quality products at the most competitive prices in Nairobi. Whether you're furnishing a home, hotel, or Airbnb — we've got you covered.</p>
+    <div class="about-stats">
+      <div class="stat"><strong>500+</strong><span>Happy Customers</span></div>
+      <div class="stat"><strong>6+</strong><span>Product Categories</span></div>
+      <div class="stat"><strong>100%</strong><span>Quality Assured</span></div>
+      <div class="stat"><strong>3yrs+</strong><span>In Business</span></div>
+    </div>
+    <br>
+    <a href="https://wa.me/254716060029" class="btn-primary" style="margin-top:8px;display:inline-flex;">💬 Chat With Us</a>
+  </div>
+  <div class="about-img"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-label">✦ Customer Love</p>
+  <h2 class="section-title">What Our Customers Say</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p>"Amazing quality mosquito nets! Got the 4-post one for my master bedroom and it looks absolutely luxurious. Will definitely order more items."</p>
+      <strong>Wanjiku M.</strong><small>Nairobi, Kenya</small>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p>"I bought the sofa covers and the marble coffee table. Both were exactly as described. Delivery was fast too. Highly recommend Irene Household!"</p>
+      <strong>Brian O.</strong><small>Westlands, Nairobi</small>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p>"Got all the white bedding for my Airbnb unit from here. Guests always compliment how fresh and crisp everything looks. Best supplier in Nairobi!"</p>
+      <strong>Amina H.</strong><small>Kilimani, Nairobi</small>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <p class="section-label">✦ Get In Touch</p>
+    <h2 class="section-title">We'd Love To Hear From You</h2>
+    <p>Have a question or want to place an order? Reach out to us via WhatsApp, call, or fill the form — we're always happy to help.</p>
+    <div class="contact-item">
+      <div class="contact-icon">📞</div>
+      <div class="contact-text">
+        <strong>Phone / WhatsApp</strong>
+        <a href="https://wa.me/254716060029">+254 716 060029</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🕐</div>
+      <div class="contact-text">
+        <strong>Business Hours</strong>
+        <span>Mon – Sat: 08:30 – 19:00</span>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div class="contact-text">
+        <strong>Location</strong>
+        <span>Nairobi, Kenya</span>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" placeholder="e.g. Jane Wanjiku"/>
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="+254 7XX XXX XXX"/>
+    </div>
+    <div class="form-group">
+      <label>Product Interest</label>
+      <select>
+        <option>Beddings & Mosquito Nets</option>
+        <option>Seat Covers</option>
+        <option>Coffee Tables</option>
+        <option>Home Furniture</option>
+        <option>Towels & Linens</option>
+        <option>Kitchen & Utensils</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea placeholder="Tell us what you need..."></textarea>
+    </div>
+    <button class="form-submit" onclick="sendWhatsApp()">Send via WhatsApp →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2024 Irene Household Collections. All Rights Reserved.</div>
+  <div>
+    <a href="#">Terms & Conditions</a> &nbsp;|&nbsp;
+    <a href="#">Privacy Policy</a>
+  </div>
+  <div class="social-links">
+    <a href="https://wa.me/254716060029" title="WhatsApp">📱</a>
+    <a href="#" title="Instagram">📷</a>
+    <a href="#" title="Facebook">👍</a>
+  </div>
+</footer>
+
+<script>
+function sendWhatsApp(){
+  const name = document.querySelector('input[type="text"]').value || 'Customer';
+  const phone = document.querySelector('input[type="tel"]').value || '';
+  const product = document.querySelector('select').value;
+  const msg = document.querySelector('textarea').value || '';
+  const text = `Hi Irene Household! My name is ${name}. I'm interested in: ${product}. ${msg}`;
+  window.open(`https://wa.me/254716060029?text=${encodeURIComponent(text)}`,'_blank');
+}
+</script>
 </body>
 </html>
